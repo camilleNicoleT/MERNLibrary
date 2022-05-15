@@ -10,9 +10,13 @@
     "build": "cd client && npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Camille Hansen-Theobald",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  
+  },
+  "dependencies": {
+    "nodemon": "^2.0.3"
   }
 }
