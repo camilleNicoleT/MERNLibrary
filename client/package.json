@@ -4,11 +4,13 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "@apollo/client": "^3.6.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
-    "jwt-decode": "^2.2.0",
+    "graphql": "^16.4.0",
+    "jwt-decode": "^3.1.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
@@ -19,10 +21,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "seed": "cd server && npm run seed"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+    "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [

@@ -56,12 +56,3 @@ export const DELETE_BOOK = gql`
     }
   }
 `;
-
-// export const DELETE_BOOK = gql`
-
-//   mutation deleteBook: (parent, {id}) => {
-//    let ID = parseInt(id)
-//    messages = messages.filter((message) => message.id !== ID);
-//    return id;
-// }
-// }
