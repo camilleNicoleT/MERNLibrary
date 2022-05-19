@@ -3,28 +3,26 @@ const { AuthenticationError} = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
-  //User get's their information
+ // User get's their information
   Query: {
-    me: async (parent, args, context) => {
+    me: async (_parent, _args, context) => {
       if (context.user) {
-
       const userData = await User.findOne({_id: context.user._id})
         .select('-__v -password')
   
       return userData;
       }
     throw new AuthenticationError('Not logged in');
-   
+    }
   },
     Mutation: {
-      addUser: async (parent, args) => {
+      addUser: async (_parent, args) => {
         const user = await User.create(args);
         const token = signToken(user);
 
-        return {token, user};
-  
-      },
-      login: async (parent, { email, password }) => {
+        return { token, user };
+    },
+      login: async (_parent, { email, password }) => {
         const user = await User.findOne({ email });
       
         if (!user) {
@@ -38,9 +36,9 @@ const resolvers = {
         }
       
         const token = signToken(user);
-        return {token, user};
+        return { token, user };
       },
-      addBook: async (parent, {newBook}, context) => {
+      addBook: async (_parent, {newBook}, context) => {
         if (context.user) {
           const updatedUser = await User.findByIdAndUpdate(
             { _id: context.user._id },
@@ -52,14 +50,13 @@ const resolvers = {
         }
       
         throw new AuthenticationError('You need to be logged in!');
+         
       },
-     
-      },
-      deleteBook: async (parent, { bookId }, context) => {
+      deleteBook: async (_parent, { bookId }, context) => {
         if (context.user) {
           const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { savedBooks: bookId } },
+            { $pull: { savedBooks: { bookId } } },
             { new: true }
           )
           return updatedUser;
@@ -68,12 +65,9 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in!');
       }
   }
+
 };
-// // make a search to google books api
-// // https://www.googleapis.com/books/v1/volumes?q=harry+potter
-// export const searchGoogleBooks = (query) => {
-//   return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
-// };
+
 module.exports = resolvers;
 
   
