@@ -7,9 +7,9 @@ import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  const { data, loading } = useQuery(QUERY_ME);
   const [deleteBook] = useMutation(DELETE_BOOK);
-
+ 
   const userData = data?.me || {};
 
   if (loading) {
@@ -50,7 +50,7 @@ const SavedBooks = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedBooks.length
+          {data && userData.savedBooks.length
             ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
             : 'You have no saved books!'}
         </h2>
