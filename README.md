@@ -1,5 +1,5 @@
 # Book Tracker
-Heroku Deployment: [https://](https://blooming-tor-92645.herokuapp.com/)
+Heroku Deployment: [Deployed Application](https://blooming-tor-92645.herokuapp.com/)
 
 Github Repo: https://github.com/camilleNicoleT/MERNLibrary
 
@@ -9,7 +9,7 @@ Track books you are interested in with this MERN stack web application.
 ## Table of Contents:
    - [Usage](#usage) 
    - [Questions](#Questions) 
-   - [Technologies] (#Technologies)
+   - [Technologies](#Technologies)
 
 
 ## Uses
